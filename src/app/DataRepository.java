@@ -7,6 +7,7 @@ import java.util.UUID;
 public class DataRepository {
 
     private Map<UUID, String> usersByIdMap = new HashMap<>();
+    private int count;
 
     public DataRepository(){
         User lucy = this.addUser("Lucy");
@@ -19,8 +20,18 @@ public class DataRepository {
         usersByIdMap.put(lucy.getId(lucy), lucy.getName(lucy));
     }
 
-    public Map<UUID, String> getData() {
-        return usersByIdMap;
+    public String getData() {
+        if (usersByIdMap == null || usersByIdMap.isEmpty()) {
+            throw new IllegalArgumentException("No data!");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        count = 1;
+        usersByIdMap.forEach((id, name) ->
+                sb.append(String.format("%d) %s %s%n",
+                        count++, id, name)));
+
+        return "ALL NAMES:\n" + sb;
     }
 
     public User addUser(String name){
