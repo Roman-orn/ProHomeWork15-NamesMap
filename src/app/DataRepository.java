@@ -31,7 +31,7 @@ public class DataRepository {
         if(usersByIdMap.containsKey(id)){
             return String.format("User with ID %s: %s", id, usersByIdMap.get(id));
         } else {
-            throw new UserNotFoundException();
+            throw new UserNotFoundException(String.format("User with ID %s: Not found!", id));
         }
     }
 }
