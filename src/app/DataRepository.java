@@ -10,14 +10,10 @@ public class DataRepository {
     private int count;
 
     public DataRepository(){
-        User lucy = this.addUser("Lucy");
-        usersByIdMap.put(lucy.getId(lucy), lucy.getName(lucy));
-        User bob = this.addUser("Bob");
-        usersByIdMap.put(lucy.getId(lucy), lucy.getName(lucy));
-        User tom = this.addUser("Tom");
-        usersByIdMap.put(lucy.getId(lucy), lucy.getName(lucy));
-        User anna = this.addUser("Anna");
-        usersByIdMap.put(lucy.getId(lucy), lucy.getName(lucy));
+        usersByIdMap.put(UUID.fromString("4b0f6211-0935-4359-974b-b4c6bf62c11d"), "Lucy");
+        usersByIdMap.put(UUID.fromString("a84152c0-e1a4-464f-921d-4114b6dec5a9"), "Bob");
+        usersByIdMap.put(UUID.fromString("c8bdd952-151c-4484-8e0e-a29df2013333"), "Tom");
+        usersByIdMap.put(UUID.fromString("7446a500-af98-4573-9f3e-e7a1505f14ea"), "Anna");
     }
 
     public String getData() {
@@ -28,7 +24,7 @@ public class DataRepository {
         StringBuilder sb = new StringBuilder();
         count = 1;
         usersByIdMap.forEach((id, name) ->
-                sb.append(String.format("%d) %s %s%n",
+                sb.append(String.format("%d) %s - %s%n",
                         count++, id, name)));
 
         return "ALL NAMES:\n" + sb;
