@@ -12,11 +12,11 @@ public class User {
         this.name = name;
     }
 
-    public UUID getId(User user) {
-        return user.id;
+    public UUID getId() {
+        return this.id;
     }
 
-    public String getName(User user) {
-        return user.name;
+    public String getName() {
+        return this.name;
     }
 }
