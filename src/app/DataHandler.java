@@ -1,31 +1,36 @@
 package app;
 
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.UUID;
 
 public class DataHandler {
 
-    Map<Integer, String> map = new DataRepository().getData();
+    private Map<UUID, String> data;
+    private int count;
+
+    public DataHandler(DataRepository dataRepository) {
+        this.data = dataRepository.getData();
+    }
 
     public String getAll() {
-        if (map == null || map.isEmpty()) {
+        if (data == null || data.isEmpty()) {
             throw new IllegalArgumentException("No data!");
         }
 
         StringBuilder sb = new StringBuilder();
-        AtomicInteger count = new AtomicInteger(1);
-        map.forEach((id, name) ->
-                sb.append(String.format("%d) %d %s%n",
-                        count.getAndIncrement(), id, name)));
+        count = 1;
+        data.forEach((id, name) ->
+                sb.append(String.format("%d) %s %s%n",
+                        count++, id, name)));
 
         return "ALL NAMES:\n" + sb;
     }
 
-    public String getById(int id) {
-        if (map.containsKey(id)) {
-            return String.format("NAME: id %d is %s", id, map.get(id));
+    public String getById(UUID id) {
+        if (data.containsKey(id)) {
+            return String.format("NAME: id %s is %s", id, data.get(id));
         } else {
-            return String.format("User with ID %d is not registered!", id);
+            return String.format("User with ID %s is not registered!", id);
         }
     }
 }
