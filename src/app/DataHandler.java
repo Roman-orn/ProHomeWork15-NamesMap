@@ -7,7 +7,7 @@ public class DataHandler {
     private DataRepository dataRepository;
 
     public DataHandler(DataRepository dataRepository) {
-        this.dataRepository = new DataRepository();
+        this.dataRepository = dataRepository;
     }
 
     public String getAll() {
