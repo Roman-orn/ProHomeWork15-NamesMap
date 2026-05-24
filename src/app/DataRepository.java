@@ -32,7 +32,7 @@ public class DataRepository {
 
     public void addUser(String name){
         User user = new User(name);
-        usersByIdMap.put(user.getId(user), user.getName(user));
+        usersByIdMap.put(user.getId(), user.getName());
     }
 
     public String getUserById(UUID id){
