@@ -30,8 +30,9 @@ public class DataRepository {
         return "ALL NAMES:\n" + sb;
     }
 
-    public User addUser(String name){
-        return new User(name);
+    public void addUser(String name){
+        User user = new User(name);
+        usersByIdMap.put(user.getId(user), user.getName(user));
     }
 
     public String getUserById(UUID id){
