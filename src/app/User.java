@@ -1,18 +1,16 @@
 package app;
 
-import java.util.UUID;
-
 public class User {
 
-    private final UUID id;
+    private final Long id;
     private final String name;
 
-    public User(String name) {
-        this.id = UUID.randomUUID();
+    public User(String name, Long id) {
+        this.id = id;
         this.name = name;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return this.id;
     }
 
